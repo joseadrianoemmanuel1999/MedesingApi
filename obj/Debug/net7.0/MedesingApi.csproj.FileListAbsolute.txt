@@ -75,3 +75,9 @@ C:\Users\josea\source\repos\MedesingApi\obj\Debug\net7.0\refint\MedesingApi.dll
 C:\Users\josea\source\repos\MedesingApi\obj\Debug\net7.0\MedesingApi.pdb
 C:\Users\josea\source\repos\MedesingApi\obj\Debug\net7.0\MedesingApi.genruntimeconfig.cache
 C:\Users\josea\source\repos\MedesingApi\obj\Debug\net7.0\ref\MedesingApi.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\Microsoft.Net.Http.Server.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\Scrutor.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\josea\source\repos\MedesingApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

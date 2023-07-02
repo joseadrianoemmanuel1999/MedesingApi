@@ -11,9 +11,17 @@ namespace MedesingApi.Model
         [Required]
         public Guid id {get;set;}
         [Required]
-        public EmailAddressAttribute email {get;set;}
-        [Required]
-        public string Password {get;set;}
+         public string FirstName {get;set;}
+         [Required]
+          public string SurName {get;set;}
+        [Required,EmailAddress]
+        public string email {get;set;}
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+       [Required]
+       public ICollection<Post>Posts {get;set;}
+       [Required]
+       public Roles Roles {get;set;}
 
     }
 }
