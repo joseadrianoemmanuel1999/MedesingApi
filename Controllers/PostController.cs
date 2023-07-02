@@ -50,5 +50,16 @@ namespace MedesingApi.Controllers
             return await _service.ListPost();
            
         }
+        [HttpDelete("DeletePost"),Authorize(Roles="user")]
+        public async Task<ActionResult<List<Post>>>Delete(Guid request)
+        {
+                var result =  _service.DeletePost(request);
+                if(result is null)
+                {
+                return NotFound("Hero not found.");
+
+                }
+                return Ok("Post Deleted");
+        }
     }
 }

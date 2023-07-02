@@ -13,5 +13,6 @@ namespace MedesingApi.Service.PostService
        string Readclaim();
        Task EditPost(EditpostDto request);
        Task<List<Post>>ListPost();
+       Task<List<Post>> DeletePost(Guid request);
     }
 }

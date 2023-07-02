@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MedesingApi.Shared
 {
-    public class EditpostDto
+    public record EditpostDto
     {
       
         public string Title {get;set;}
