@@ -136,8 +136,10 @@ namespace MedesingApi.Service.UserService
 
             return refreshToken;
         }
- 
-      
 
-}
+      /*  public Task<User> GetUser()
+        {
+          
+        }*/
+    }
 }

@@ -11,6 +11,6 @@ namespace MedesingApi.Service.UserService
     {
         Task<RegisterDto> RegisterUser (RegisterDto request);
        Task <User> LoginUser (LoginDto request);
-   //Task<bool> EmmailVerification (RegisterDto request);
+        //Task<User> GetUser();
     }
 }

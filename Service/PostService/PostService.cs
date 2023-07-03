@@ -8,6 +8,7 @@ using MedesingApi.Db;
 using MedesingApi.Model;
 using MedesingApi.Shared;
 using Microsoft.EntityFrameworkCore;
+using MedesingApi.Service.UserService;
 
 namespace MedesingApi.Service.PostService
 {
@@ -16,11 +17,13 @@ namespace MedesingApi.Service.PostService
         private readonly Appcontext _appContext;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public PostService(Appcontext appContext, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        private readonly IUser _userservice;
+        public PostService(Appcontext appContext, IMapper mapper, IHttpContextAccessor httpContextAccessor,IUser userservice)
         {
             _appContext = appContext;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _userservice= userservice;
 
         }
         public async Task AddPost(PostDto request, string email)
@@ -51,8 +54,12 @@ namespace MedesingApi.Service.PostService
         {
             var email = Readclaim();
             var userId = _appContext.Users.FirstOrDefault(c => c.email == email);
-            var Postid = _appContext.Posts.FirstOrDefault(c => c.UserId == userId.id);
-
+               var Postentity = _appContext.Posts.FirstOrDefault(c =>c.id==request.id && c.UserId==userId.id);
+                if(Postentity is null)
+                throw new Exception($"Post id not found");
+               
+                 _mapper.Map(request,Postentity);
+           //     _appContext.Posts.Update(Editpost);
             await _appContext.SaveChangesAsync();
 
         }
@@ -74,20 +81,20 @@ namespace MedesingApi.Service.PostService
 
         }
 
-        public async Task<List<Post>> DeletePost(Guid request)
+        public async Task DeletePost(Guid request)
         {
             var email = Readclaim();
             var userid = _appContext.Users.FirstOrDefault(c => c.email == email);
-            var Postid = _appContext.Posts.FirstOrDefault(c => c.UserId == userid.id);
-            var post= _appContext.Posts.Where(c => c.id == request && c.UserId == userid.id).ExecuteDelete();
+            var Postid = _appContext.Posts.FirstOrDefault(c => c.UserId == userid.id && c.id==request);
+            if(Postid is null)
+            {
+                throw new Exception("This post is not exist");
+            }
+            
+                _appContext.Posts.Where(c=>c.id==request).ExecuteDelete();
             await _appContext.SaveChangesAsync();
-            return _appContext.Posts.ToList();
+            
 
-        }
-        private void Verification (string request,Guid id)
-        {
-            
-            
         }
 
     }

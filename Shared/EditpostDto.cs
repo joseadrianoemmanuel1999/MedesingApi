@@ -7,10 +7,9 @@ namespace MedesingApi.Shared
 {
     public record EditpostDto
     {
-      
-        public string Title {get;set;}
+        public Guid id{get;set;}
+        public string? Title {get;set;}=string.Empty;
+        public string? Text {get;set;}=string.Empty;
         
-       
-        public string Text {get;set;}
     }
 }
